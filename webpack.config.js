@@ -12,7 +12,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
