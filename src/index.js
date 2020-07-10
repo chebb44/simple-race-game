@@ -7,23 +7,29 @@ import { renderLines } from './js/renderLines';
 import { GAME_DATA } from './js/gameData';
 import { changeInterval } from './js/changeInterval';
 import { renderSidebar } from './js/renderSidebar';
+import { checkEndGame } from './js/checkEndGame';
 
 const gameIntervalHandler = () => {
+  if (checkEndGame()) {
+    document.removeEventListener('keydown', moveCarHandler);
+    console.log('game end');
+  } else {
+    setTimeout(gameIntervalHandler, GAME_DATA.renderInterval);
+  }
   changeInterval();
   renderLines();
   updateRoadArray();
   renderRoad();
   renderSidebar();
-
-  setTimeout(gameIntervalHandler, GAME_DATA.renderInterval);
 };
 
 resizeCanvas();
 fillBackground();
 gameIntervalHandler();
 
-document.onkeydown = moveCarHandler;
+document.addEventListener('keydown', moveCarHandler);
 window.onresize = () => {
   resizeCanvas();
   fillBackground();
+  renderSidebar();
 };

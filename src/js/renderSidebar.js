@@ -22,6 +22,7 @@ export const renderSidebar = () => {
   CONTEXT.fillStyle = TEXT_COLOR;
   CONTEXT.font = `${fontSize}px serif`;
   CONTEXT.textAlign = 'center';
+
   CONTEXT.fillText('Score', 12.5 * pixelSize, 1 * pixelSize);
   CONTEXT.fillText(`${GAME_DATA.score}`, 12.5 * pixelSize, 2 * pixelSize);
 
