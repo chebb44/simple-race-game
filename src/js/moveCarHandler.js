@@ -1,15 +1,14 @@
-import { UP_DIR, USER_CAR_LEFT, USER_CAR_RIGHT } from './constants';
-import { drawCar } from './drawCar';
+import { RIGHT, LEFT } from './constants';
+import { renderRoad } from './renderRoad';
+import { GAME_DATA } from './gameData';
 
 export const moveCarHandler = (e) => {
-  if (e.keyCode == 37) {
-    console.log('left');
-    drawCar({ isDraw: false, direction: UP_DIR, ...USER_CAR_RIGHT });
-    drawCar({ isDraw: true, direction: UP_DIR, ...USER_CAR_LEFT });
+  if (+e.keyCode === 37 && GAME_DATA.userCarPosition === RIGHT) {
+    GAME_DATA.userCarPosition = LEFT;
+    renderRoad();
   }
-  if (e.keyCode == 39) {
-    console.log('right');
-    drawCar({ isDraw: false, direction: UP_DIR, ...USER_CAR_LEFT });
-    drawCar({ isDraw: true, direction: UP_DIR, ...USER_CAR_RIGHT });
+  if (+e.keyCode === 39 && GAME_DATA.userCarPosition === LEFT) {
+    GAME_DATA.userCarPosition = RIGHT;
+    renderRoad();
   }
 };

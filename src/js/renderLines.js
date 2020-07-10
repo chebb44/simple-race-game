@@ -11,7 +11,7 @@ function drawRoadLine(startX, startY) {
   }
 }
 
-export const drawRoad = (position) => {
+export const renderLines = (position) => {
   const shift = position % 4;
   drawRoadLine(0, shift);
   drawRoadLine(9, shift);
