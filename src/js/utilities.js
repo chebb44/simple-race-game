@@ -4,4 +4,3 @@ export const createBlock = (parent, type, id) => {
   block.id = id;
   return block;
 };
-export const getPixelSize = () => { };
