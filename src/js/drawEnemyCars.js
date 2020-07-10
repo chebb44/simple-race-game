@@ -1,1 +1,1 @@
-export const drawEnemyCars = () => {};
+export const drawEnemyCars = (roadArray, roadArrayPosition) => {};
