@@ -2,10 +2,11 @@ import { CONTEXT, CANVAS } from './addCanvas';
 import { ACTIVE_COLOR, INACTIVE_COLOR, resX } from './constants';
 
 export const drawPixel = ({ isActive, x, y }) => {
-  const pixelSize = CANVAS.width / resX;
+  const pixelSize = Math.round(CANVAS.width / resX);
   CONTEXT.strokeStyle = isActive ? ACTIVE_COLOR : INACTIVE_COLOR;
   CONTEXT.fillStyle = isActive ? ACTIVE_COLOR : INACTIVE_COLOR;
   const gapSize = Math.round(pixelSize * 0.1);
+  CONTEXT.clearRect(x * pixelSize, y * pixelSize, pixelSize + gapSize, pixelSize + gapSize);
   CONTEXT.strokeRect(
     x * pixelSize + gapSize,
     y * pixelSize + gapSize,
