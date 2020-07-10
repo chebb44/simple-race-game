@@ -1,10 +1,14 @@
 export const APP_WRAPPER = document.querySelector('.app-wrapper');
 export const resX = 15;
 export const resY = 20;
+export const SPEED_COEFFICIENT = 0.85;
+export const MIN_INTERVAL = 25;
+export const START_INTERVAL = 220;
 
 export const ACTIVE_COLOR = '#353535';
 export const INACTIVE_COLOR = '#1111111c';
-export const BACKGROUND_COLOR = '#8ceba9';
+export const BACKGROUND_COLOR = '#55cc87';
+export const TEXT_COLOR = '#000000';
 
 export const UP_DIR = 'UP_DIR';
 export const DOWN_DIR = 'DOWN_DIR';

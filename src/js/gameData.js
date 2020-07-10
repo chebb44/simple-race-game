@@ -1,4 +1,4 @@
-import { LEFT } from './constants';
+import { LEFT, START_INTERVAL } from './constants';
 import { getNewRoadPart } from './getNewRoadPart';
 
 export const GAME_DATA = {
@@ -6,5 +6,5 @@ export const GAME_DATA = {
   userCarPosition: LEFT,
   roadArray: [...getNewRoadPart(), ...getNewRoadPart()],
   score: 0,
-  renderInterval: 300,
+  renderInterval: START_INTERVAL,
 };

@@ -8,7 +8,7 @@ import {
 
 export const drawPixel = ({ isActive, x, y }) => {
   const pixelSize = Math.round(CANVAS.width / resX);
-  const gapSize = Math.round(pixelSize * 0.1);
+  const gapSize = Math.round(pixelSize * 0.05);
   CONTEXT.clearRect(
     x * pixelSize,
     y * pixelSize,

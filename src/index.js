@@ -5,15 +5,17 @@ import { moveCarHandler } from './js/moveCarHandler';
 import { renderRoad } from './js/renderRoad';
 import { renderLines } from './js/renderLines';
 import { GAME_DATA } from './js/gameData';
+import { changeInterval } from './js/changeInterval';
+import { renderSidebar } from './js/renderSidebar';
 
-const stepInterval = 300;
 const gameIntervalHandler = () => {
-  GAME_DATA.score += 1;
-  renderLines(GAME_DATA.score);
+  changeInterval();
+  renderLines();
   updateRoadArray();
   renderRoad();
+  renderSidebar();
 
-  setTimeout(gameIntervalHandler, stepInterval);
+  setTimeout(gameIntervalHandler, GAME_DATA.renderInterval);
 };
 
 resizeCanvas();

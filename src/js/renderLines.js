@@ -1,5 +1,6 @@
 import { drawPixel } from './drawPixel';
 import { resY } from './constants';
+import { GAME_DATA } from './gameData';
 
 function drawRoadLine(startX, startY) {
   for (let y = -4; y < resY; y += 1) {
@@ -11,8 +12,8 @@ function drawRoadLine(startX, startY) {
   }
 }
 
-export const renderLines = (position) => {
-  const shift = position % 4;
+export const renderLines = () => {
+  const shift = GAME_DATA.score % 4;
   drawRoadLine(0, shift);
   drawRoadLine(9, shift);
 };
