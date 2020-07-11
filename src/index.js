@@ -7,7 +7,7 @@ import { renderRoad } from './js/renderRoad';
 import { renderLines } from './js/renderLines';
 import { GAME_DATA, resetGameData } from './js/gameData';
 import { changeInterval } from './js/changeInterval';
-import { renderSidebar } from './js/renderSidebar';
+import { renderSidebar, renderLogo } from './js/renderSidebar';
 import { checkEndGame } from './js/checkEndGame';
 import { screenAnimation } from './js/screenAnimation';
 import { renderEndGameMessage } from './js/renderEndGameMessage';
@@ -51,6 +51,8 @@ const startGameHandler = (e) => {
 resizeCanvas();
 fillBackground();
 renderSidebar();
+renderLogo();
+
 screenAnimation()
   .then(() => renderStartGameMessage())
   .then(() => {
@@ -61,4 +63,5 @@ window.onresize = () => {
   resizeCanvas();
   fillBackground();
   renderSidebar();
+  renderLogo();
 };

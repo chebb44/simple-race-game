@@ -11,6 +11,6 @@ export const playGameOverSound = () => {
   audio.play();
 };
 export const playSpeedUpSound = () => {
-  const audio = new Audio(gameOverAudio);
+  const audio = new Audio(speedUpAudio);
   audio.play();
 };
