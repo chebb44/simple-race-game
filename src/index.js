@@ -15,7 +15,7 @@ import { LOCAL_STORAGE_NAME } from './js/constants';
 import { renderStartGameMessage } from './js/renderStartGameMessage';
 import { playStartSound, playGameOverSound } from './js/playSounds';
 
-export const gameIntervalHandler = () => {
+export const mainGameLoop = () => {
   document.removeEventListener('keydown', startGameHandler);
   changeInterval();
   renderLines();
@@ -35,14 +35,14 @@ export const gameIntervalHandler = () => {
         document.addEventListener('keydown', startGameHandler);
       });
   } else {
-    setTimeout(gameIntervalHandler, GAME_DATA.renderInterval);
+    setTimeout(mainGameLoop, GAME_DATA.renderInterval);
   }
 };
 
 const startGameHandler = (e) => {
   if (+e.keyCode === 13) {
     resetGameData();
-    gameIntervalHandler();
+    mainGameLoop();
     document.addEventListener('keydown', moveCarHandler);
     playStartSound();
   }
