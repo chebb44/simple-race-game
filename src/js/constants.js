@@ -20,3 +20,5 @@ export const CAR_HEAD = 'CAR_HEAD';
 
 export const LEFT = 'LEFT';
 export const RIGHT = 'RIGHT';
+
+export const LOCAL_STORAGE_NAME = 'simple-race-hi-score';

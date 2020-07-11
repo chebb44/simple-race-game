@@ -27,8 +27,12 @@ export const renderSidebar = () => {
   CONTEXT.fillText(`${GAME_DATA.score}`, 12.5 * pixelSize, 2 * pixelSize);
 
   CONTEXT.fillText('Hi-Score', 12.5 * pixelSize, 3 * pixelSize);
-  CONTEXT.fillText(`${GAME_DATA.score}`, 12.5 * pixelSize, 4 * pixelSize);
+  CONTEXT.fillText(`${GAME_DATA.hiScore}`, 12.5 * pixelSize, 4 * pixelSize);
 
   CONTEXT.fillText('Speed', 12.5 * pixelSize, 10 * pixelSize);
-  CONTEXT.fillText(`${250 - GAME_DATA.renderInterval}`, 12.5 * pixelSize, 11 * pixelSize);
+  CONTEXT.fillText(
+    `${250 - GAME_DATA.renderInterval}`,
+    12.5 * pixelSize,
+    11 * pixelSize,
+  );
 };
