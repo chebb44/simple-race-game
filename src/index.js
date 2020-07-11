@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { resizeCanvas } from './js/resizeCanvas';
 import { fillBackground } from './js/fillBackground';
 import { updateRoadArray } from './js/updateRoadArray';
@@ -12,8 +13,10 @@ import { screenAnimation } from './js/screenAnimation';
 import { renderEndGameMessage } from './js/renderEndGameMessage';
 import { LOCAL_STORAGE_NAME } from './js/constants';
 import { renderStartGameMessage } from './js/renderStartGameMessage';
+import { playStartSound, playGameOverSound } from './js/playSounds';
 
 export const gameIntervalHandler = () => {
+  document.removeEventListener('keydown', startGameHandler);
   changeInterval();
   renderLines();
   updateRoadArray();
@@ -25,10 +28,10 @@ export const gameIntervalHandler = () => {
       LOCAL_STORAGE_NAME,
       Math.max(GAME_DATA.score, localStorage.getItem(LOCAL_STORAGE_NAME)),
     );
+    playGameOverSound();
     screenAnimation()
       .then(() => renderEndGameMessage())
       .then(() => {
-        // eslint-disable-next-line no-use-before-define
         document.addEventListener('keydown', startGameHandler);
       });
   } else {
@@ -41,6 +44,7 @@ const startGameHandler = (e) => {
     resetGameData();
     gameIntervalHandler();
     document.addEventListener('keydown', moveCarHandler);
+    playStartSound();
   }
 };
 

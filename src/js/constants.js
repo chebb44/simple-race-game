@@ -1,9 +1,9 @@
 export const APP_WRAPPER = document.querySelector('.app-wrapper');
 export const resX = 15;
 export const resY = 20;
-export const SPEED_COEFFICIENT = 0.9;
+export const SPEED_COEFFICIENT = 0.8;
 export const MIN_INTERVAL = 22;
-export const START_INTERVAL = 180;
+export const START_INTERVAL = 230;
 
 export const ACTIVE_COLOR = '#353535';
 export const INACTIVE_COLOR = '#1111111c';
