@@ -2,10 +2,12 @@ import { CAR_HEAD, DOWN_DIR } from './constants';
 import { drawCar } from './drawCar';
 import { GAME_DATA } from './gameData';
 
-export const drawEnemyCars = () => {
+export const drawEnemyCars = (canvas, context) => {
   GAME_DATA.roadArray.forEach((element, index) => {
     if (element.l === CAR_HEAD) {
       drawCar({
+        canvas,
+        context,
         isDraw: true,
         direction: DOWN_DIR,
         x: 2,
@@ -14,6 +16,8 @@ export const drawEnemyCars = () => {
     }
     if (element.r === CAR_HEAD) {
       drawCar({
+        canvas,
+        context,
         isDraw: true,
         direction: DOWN_DIR,
         x: 5,

@@ -19,7 +19,7 @@ import {
 class Game {
   constructor() {
     this.$canvas = createBlock(APP_WRAPPER, 'canvas', 'app-canvas');
-    this.context = this.canvas.getContext('2d');
+    this.context = this.$canvas.getContext('2d');
 
     this.resizeCanvas = () => {
       const { clientWidth } = document.body;
@@ -34,33 +34,32 @@ class Game {
       renderSidebar(this.$canvas, this.context);
       renderLogo(this.$canvas, this.context);
       screenAnimation(this.$canvas, this.context)
-        .then(() => renderStartGameMessage())
+        .then(() => renderStartGameMessage(this.$canvas, this.context))
         .then(() => {
           document.addEventListener('keydown', this.startGameHandler);
         });
       window.onresize = () => {
         this.resizeCanvas();
-        fillBackground();
-        renderSidebar();
-        renderLogo();
+        fillBackground(this.$canvas, this.context);
+        renderSidebar(this.$canvas, this.context);
+        renderLogo(this.$canvas, this.context);
       };
     };
     this.startGameHandler = (e) => {
       if (+e.keyCode === 13) {
-        console.log('Game -> startGameHandler -> this', this);
         resetGameData();
         this.mainGameLoop();
-        document.addEventListener('keydown', moveCarHandler);
+        document.addEventListener('keydown', moveCarHandler(this.$canvas, this.context));
         playStartSound();
       }
     };
     this.mainGameLoop = () => {
       document.removeEventListener('keydown', this.startGameHandler);
       changeInterval();
-      renderLines();
+      renderLines(this.$canvas, this.context);
       updateRoadArray();
-      renderRoad();
-      renderSidebar();
+      renderRoad(this.$canvas, this.context);
+      renderSidebar(this.$canvas, this.context);
       if (checkEndGame()) {
         document.removeEventListener('keydown', moveCarHandler);
         localStorage.setItem(
@@ -68,8 +67,8 @@ class Game {
           Math.max(GAME_DATA.score, localStorage.getItem(LOCAL_STORAGE_NAME)),
         );
         playGameOverSound();
-        screenAnimation()
-          .then(() => renderEndGameMessage())
+        screenAnimation(this.$canvas, this.context)
+          .then(() => renderEndGameMessage(this.$canvas, this.context))
           .then(() => {
             document.addEventListener('keydown', this.startGameHandler);
           });
