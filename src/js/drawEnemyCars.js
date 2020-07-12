@@ -1,28 +1,25 @@
-import { CAR_HEAD, DOWN_DIR } from './constants';
+import {
+  CAR_HEAD, DOWN_DIR, LEFT, RIGHT,
+} from './constants';
 import { drawCar } from './drawCar';
-import { GAME_DATA } from './gameData';
 
-export const drawEnemyCars = (canvas, context) => {
-  GAME_DATA.roadArray.forEach((element, index) => {
-    if (element.l === CAR_HEAD) {
-      drawCar({
-        canvas,
-        context,
+export function drawEnemyCars() {
+  this.gameData.roadArray.forEach((element, index) => {
+    if (element[LEFT] === CAR_HEAD) {
+      drawCar.call(this, {
         isDraw: true,
         direction: DOWN_DIR,
         x: 2,
-        y: GAME_DATA.roadShift - index,
+        y: this.gameData.roadShift - index,
       });
     }
-    if (element.r === CAR_HEAD) {
-      drawCar({
-        canvas,
-        context,
+    if (element[RIGHT] === CAR_HEAD) {
+      drawCar.call(this, {
         isDraw: true,
         direction: DOWN_DIR,
         x: 5,
-        y: GAME_DATA.roadShift - index,
+        y: this.gameData.roadShift - index,
       });
     }
   });
-};
+}

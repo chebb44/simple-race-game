@@ -1,55 +1,58 @@
 import { resX, BACKGROUND_COLOR, TEXT_COLOR } from './constants';
-import { GAME_DATA } from './gameData';
 import logoImg from '../assets/tetris.svg';
 
-export const renderSidebar = (canvas, context) => {
-  const pixelSize = Math.round(canvas.width / resX);
+export function renderSidebar() {
+  const pixelSize = Math.round(this.$canvas.width / resX);
   const gapSize = Math.round(pixelSize * 0.05);
-  const fontSize = Math.round(canvas.width / 20);
-  context.clearRect(
+  const fontSize = Math.round(this.$canvas.width / 20);
+  this.context.clearRect(
     pixelSize * 10 + gapSize,
     0,
     pixelSize * 15 + gapSize,
     pixelSize * 13,
   );
-  context.fillStyle = BACKGROUND_COLOR;
-  context.fillRect(
+  this.context.fillStyle = BACKGROUND_COLOR;
+  this.context.fillRect(
     10 * pixelSize,
     0 * pixelSize,
     15 * pixelSize + gapSize,
     13 * pixelSize + gapSize,
   );
-  context.fillStyle = TEXT_COLOR;
-  context.font = `${fontSize}px serif`;
-  context.textAlign = 'center';
+  this.context.fillStyle = TEXT_COLOR;
+  this.context.font = `${fontSize}px serif`;
+  this.context.textAlign = 'center';
 
-  context.fillText('Score', 12.5 * pixelSize, 1 * pixelSize);
-  context.fillText(`${GAME_DATA.score}`, 12.5 * pixelSize, 2 * pixelSize);
+  this.context.fillText('Score', 12.5 * pixelSize, 1 * pixelSize);
+  this.context.fillText(`${this.gameData.score}`, 12.5 * pixelSize, 2 * pixelSize);
 
-  context.fillText('Hi-Score', 12.5 * pixelSize, 3 * pixelSize);
-  context.fillText(`${GAME_DATA.hiScore}`, 12.5 * pixelSize, 4 * pixelSize);
+  this.context.fillText('Hi-Score', 12.5 * pixelSize, 3 * pixelSize);
+  this.context.fillText(
+    `${this.gameData.hiScore}`,
+    12.5 * pixelSize,
+    4 * pixelSize,
+  );
 
-  context.fillText('Speed', 12.5 * pixelSize, 6 * pixelSize);
-  context.fillText(
-    `${250 - GAME_DATA.renderInterval}`,
+  this.context.fillText('Speed', 12.5 * pixelSize, 6 * pixelSize);
+  this.context.fillText(
+    `${250 - this.gameData.renderInterval}`,
     12.5 * pixelSize,
     7 * pixelSize,
   );
-  context.fillText('BRICK', 12.5 * pixelSize, 11 * pixelSize);
-  context.fillText('RACING', 12.5 * pixelSize, 12 * pixelSize);
-};
+  this.context.fillText('BRICK', 12.5 * pixelSize, 11 * pixelSize);
+  this.context.fillText('RACING', 12.5 * pixelSize, 12 * pixelSize);
+}
 
-export const renderLogo = (canvas, context) => {
-  const pixelSize = Math.round(canvas.width / resX);
+export function renderLogo() {
+  const pixelSize = Math.round(this.$canvas.width / resX);
   const gapSize = Math.round(pixelSize * 0.05);
-  context.clearRect(
+  this.context.clearRect(
     pixelSize * 10 + gapSize,
     pixelSize * 13 + gapSize,
     pixelSize * 15 + gapSize,
     pixelSize * 20 + gapSize,
   );
-  context.fillStyle = BACKGROUND_COLOR;
-  context.fillRect(
+  this.context.fillStyle = BACKGROUND_COLOR;
+  this.context.fillRect(
     10 * pixelSize,
     13 * pixelSize,
     15 * pixelSize + gapSize,
@@ -58,7 +61,7 @@ export const renderLogo = (canvas, context) => {
   const logo = new Image();
   logo.src = logoImg;
   logo.onload = () => {
-    context.drawImage(
+    this.context.drawImage(
       logo,
       pixelSize * 10.75,
       pixelSize * 14,
@@ -66,4 +69,4 @@ export const renderLogo = (canvas, context) => {
       pixelSize * 4.25,
     );
   };
-};
+}

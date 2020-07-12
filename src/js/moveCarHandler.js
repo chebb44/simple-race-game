@@ -1,14 +1,13 @@
 import { RIGHT, LEFT } from './constants';
 import { renderRoad } from './renderRoad';
-import { GAME_DATA } from './gameData';
 
-export const moveCarHandler = (canvas, context) => (e) => {
-  if (+e.keyCode === 37 && GAME_DATA.userCarPosition === RIGHT) {
-    GAME_DATA.userCarPosition = LEFT;
-    renderRoad(canvas, context);
+export function moveCarHandler(e) {
+  if (+e.keyCode === 37 && this.gameData.userCarPosition === RIGHT) {
+    this.gameData.userCarPosition = LEFT;
+    renderRoad.call(this);
   }
-  if (+e.keyCode === 39 && GAME_DATA.userCarPosition === LEFT) {
-    GAME_DATA.userCarPosition = RIGHT;
-    renderRoad(canvas, context);
+  if (+e.keyCode === 39 && this.gameData.userCarPosition === LEFT) {
+    this.gameData.userCarPosition = RIGHT;
+    renderRoad.call(this);
   }
 };
