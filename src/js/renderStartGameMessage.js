@@ -1,5 +1,4 @@
 import { resX, BACKGROUND_COLOR, TEXT_COLOR } from './constants';
-import { CANVAS } from './baseCanvasClass';
 
 export const renderStartGameMessage = () => {
   const pixelSize = Math.round(CANVAS.$canvas.width / resX);

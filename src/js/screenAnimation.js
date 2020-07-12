@@ -1,7 +1,7 @@
 import { resY } from './constants';
 import { drawPixel } from './drawPixel';
 
-export const screenAnimation = () => {
+export const screenAnimation = (canvas, context) => {
   const promiseArray = [];
   for (let y = 0; y < resY; y += 1) {
     for (let x = 0; x < 10; x += 1) {
@@ -10,7 +10,13 @@ export const screenAnimation = () => {
           resolve();
         }, 10 * x * y);
       });
-      promise.then(() => drawPixel({ isActive: true, x, y }));
+      promise.then(() => drawPixel({
+        canvas,
+        context,
+        isActive: true,
+        x,
+        y,
+      }));
       promiseArray.push(promise);
     }
   }
