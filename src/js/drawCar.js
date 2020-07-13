@@ -1,23 +1,43 @@
 import { drawPixel } from './drawPixel';
 import { UP_DIR, DOWN_DIR } from './constants';
 
-export const drawCar = ({ isDraw, direction, x, y }) => {
+export function drawCar({
+  isDraw, direction, x, y,
+}) {
+  const carUpPixels = [
+    { x: x + 1, y },
+    { x, y: y + 1 },
+    { x: x + 1, y: y + 1 },
+    { x: x + 2, y: y + 1 },
+    { x: x + 1, y: y + 2 },
+    { x, y: y + 3 },
+    { x: x + 2, y: y + 3 },
+  ];
+  const carDownPixels = [
+    { x, y },
+    { x: x + 2, y },
+    { x: x + 1, y: y + 1 },
+    { x, y: y + 2 },
+    { x: x + 1, y: y + 2 },
+    { x: x + 2, y: y + 2 },
+    { x: x + 1, y: y + 3 },
+  ];
   if (direction === UP_DIR) {
-    drawPixel({ isActive: isDraw, x: x + 1, y });
-    drawPixel({ isActive: isDraw, x, y: y + 1 });
-    drawPixel({ isActive: isDraw, x: x + 1, y: y + 1 });
-    drawPixel({ isActive: isDraw, x: x + 2, y: y + 1 });
-    drawPixel({ isActive: isDraw, x: x + 1, y: y + 2 });
-    drawPixel({ isActive: isDraw, x, y: y + 3 });
-    drawPixel({ isActive: isDraw, x: x + 2, y: y + 3 });
+    carUpPixels.forEach((item) => {
+      drawPixel({
+        isActive: isDraw,
+        x: item.x,
+        y: item.y,
+      });
+    });
   }
   if (direction === DOWN_DIR) {
-    drawPixel({ isActive: isDraw, x, y });
-    drawPixel({ isActive: isDraw, x: x + 2, y });
-    drawPixel({ isActive: isDraw, x: x + 1, y: y + 1 });
-    drawPixel({ isActive: isDraw, x, y: y + 2 });
-    drawPixel({ isActive: isDraw, x: x + 1, y: y + 2 });
-    drawPixel({ isActive: isDraw, x: x + 2, y: y + 2 });
-    drawPixel({ isActive: isDraw, x: x + 1, y: y + 3 });
+    carDownPixels.forEach((item) => {
+      drawPixel({
+        isActive: isDraw,
+        x: item.x,
+        y: item.y,
+      });
+    });
   }
 };
